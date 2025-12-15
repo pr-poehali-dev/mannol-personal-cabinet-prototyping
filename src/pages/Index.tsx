@@ -496,6 +496,23 @@ export default function Index() {
           </TabsContent>
 
           <TabsContent value="analytics" className="space-y-6">
+            <div className="flex justify-between items-center mb-6">
+              <div>
+                <h2 className="text-2xl font-bold" style={{ color: '#26255B' }}>Аналитика и отчёты</h2>
+                <p className="text-muted-foreground">Подробная статистика продаж и выполнения планов</p>
+              </div>
+              <div className="flex gap-2">
+                <Button variant="outline" className="gap-2">
+                  <Icon name="FileSpreadsheet" size={18} style={{ color: '#10b981' }} />
+                  Экспорт в Excel
+                </Button>
+                <Button variant="outline" className="gap-2">
+                  <Icon name="FileText" size={18} style={{ color: '#ef4444' }} />
+                  Экспорт в PDF
+                </Button>
+              </div>
+            </div>
+
             <div className="grid gap-6 md:grid-cols-4">
               <Card className="md:col-span-1">
                 <CardContent className="p-6">
@@ -566,11 +583,19 @@ export default function Index() {
 
             <Card>
               <CardHeader>
-                <h2 className="text-xl font-bold flex items-center gap-2">
-                  <Icon name="BarChart3" size={24} style={{ color: '#26255B' }} />
-                  План продаж по категориям
-                </h2>
-                <p className="text-muted-foreground">Текущий месяц: Декабрь 2024</p>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h2 className="text-xl font-bold flex items-center gap-2">
+                      <Icon name="BarChart3" size={24} style={{ color: '#26255B' }} />
+                      План продаж по категориям
+                    </h2>
+                    <p className="text-muted-foreground">Текущий месяц: Декабрь 2024</p>
+                  </div>
+                  <Button variant="ghost" size="sm" className="gap-2">
+                    <Icon name="Download" size={16} />
+                    Скачать отчёт
+                  </Button>
+                </div>
               </CardHeader>
               <CardContent className="space-y-4">
                 {[
@@ -610,10 +635,16 @@ export default function Index() {
             <div className="grid md:grid-cols-2 gap-6">
               <Card>
                 <CardHeader>
-                  <h2 className="text-lg font-bold flex items-center gap-2">
-                    <Icon name="LineChart" size={20} style={{ color: '#26255B' }} />
-                    Статистика продаж
-                  </h2>
+                  <div className="flex justify-between items-center">
+                    <h2 className="text-lg font-bold flex items-center gap-2">
+                      <Icon name="LineChart" size={20} style={{ color: '#26255B' }} />
+                      Статистика продаж
+                    </h2>
+                    <Button variant="ghost" size="sm" className="gap-2">
+                      <Icon name="FileSpreadsheet" size={14} style={{ color: '#10b981' }} />
+                      Excel
+                    </Button>
+                  </div>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
@@ -641,10 +672,16 @@ export default function Index() {
 
               <Card>
                 <CardHeader>
-                  <h2 className="text-lg font-bold flex items-center gap-2">
-                    <Icon name="Award" size={20} style={{ color: '#FCC917' }} />
-                    Выполнение плана по бонусам
-                  </h2>
+                  <div className="flex justify-between items-center">
+                    <h2 className="text-lg font-bold flex items-center gap-2">
+                      <Icon name="Award" size={20} style={{ color: '#FCC917' }} />
+                      Выполнение плана по бонусам
+                    </h2>
+                    <Button variant="ghost" size="sm" className="gap-2">
+                      <Icon name="FileText" size={14} style={{ color: '#ef4444' }} />
+                      PDF
+                    </Button>
+                  </div>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="text-center py-4">
@@ -693,10 +730,25 @@ export default function Index() {
 
             <Card>
               <CardHeader>
-                <h2 className="text-xl font-bold flex items-center gap-2">
-                  <Icon name="PackageCheck" size={24} style={{ color: '#26255B' }} />
-                  Анализ продукции
-                </h2>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h2 className="text-xl font-bold flex items-center gap-2">
+                      <Icon name="PackageCheck" size={24} style={{ color: '#26255B' }} />
+                      Анализ продукции
+                    </h2>
+                    <p className="text-muted-foreground mt-1">Покупаемые и непопулярные товары за период</p>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button variant="outline" size="sm" className="gap-2">
+                      <Icon name="FileSpreadsheet" size={14} style={{ color: '#10b981' }} />
+                      Excel
+                    </Button>
+                    <Button variant="outline" size="sm" className="gap-2">
+                      <Icon name="FileText" size={14} style={{ color: '#ef4444' }} />
+                      PDF
+                    </Button>
+                  </div>
+                </div>
               </CardHeader>
               <CardContent>
                 <div className="grid md:grid-cols-2 gap-6">

@@ -145,11 +145,11 @@ export default function Index() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">M</span>
+              <div className="h-10 w-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#FCC917' }}>
+                <span className="font-bold text-xl" style={{ color: '#26255B' }}>M</span>
               </div>
               <div>
-                <h1 className="text-xl font-bold text-foreground">MANNOL</h1>
+                <h1 className="text-xl font-bold" style={{ color: '#26255B' }}>MANNOL</h1>
                 <p className="text-xs text-muted-foreground">Личный кабинет партнёра</p>
               </div>
             </div>
@@ -224,7 +224,7 @@ export default function Index() {
                       />
                     </div>
                     {product.isNew && (
-                      <Badge className="absolute top-3 right-3 bg-primary">
+                      <Badge className="absolute top-3 right-3" style={{ backgroundColor: '#FCC917', color: '#26255B' }}>
                         Новинка
                       </Badge>
                     )}
@@ -433,13 +433,13 @@ export default function Index() {
 
           <TabsContent value="promo" className="space-y-6">
             <Card className="overflow-hidden">
-              <div className="bg-gradient-to-r from-primary to-primary/80 p-8 text-primary-foreground">
+              <div className="p-8" style={{ background: 'linear-gradient(to right, #26255B, #1a1a4a)', color: 'white' }}>
                 <h2 className="text-3xl font-bold mb-2">Специальное предложение</h2>
-                <p className="text-primary-foreground/90">Акции и скидки для наших партнёров</p>
+                <p style={{ color: 'rgba(255,255,255,0.9)' }}>Акции и скидки для наших партнёров</p>
               </div>
               <CardContent className="p-6 space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
-                  <Card className="border-2 border-primary">
+                  <Card className="border-2" style={{ borderColor: '#26255B' }}>
                     <CardContent className="p-6">
                       <Badge className="mb-3">До 31 декабря</Badge>
                       <h3 className="text-xl font-bold mb-2">Скидка 15% на синтетику</h3>
@@ -467,7 +467,7 @@ export default function Index() {
             <div className="grid md:grid-cols-3 gap-4">
               <Card>
                 <CardContent className="p-6 text-center">
-                  <Icon name="Gift" size={40} className="mx-auto mb-3 text-primary" />
+                  <Icon name="Gift" size={40} className="mx-auto mb-3" style={{ color: '#FCC917' }} />
                   <h3 className="font-semibold mb-2">Бонусная программа</h3>
                   <p className="text-sm text-muted-foreground">Накапливайте баллы за каждый заказ</p>
                 </CardContent>
@@ -475,7 +475,7 @@ export default function Index() {
 
               <Card>
                 <CardContent className="p-6 text-center">
-                  <Icon name="Truck" size={40} className="mx-auto mb-3 text-primary" />
+                  <Icon name="Truck" size={40} className="mx-auto mb-3" style={{ color: '#FCC917' }} />
                   <h3 className="font-semibold mb-2">Бесплатная доставка</h3>
                   <p className="text-sm text-muted-foreground">При заказе от 50 000 ₽</p>
                 </CardContent>
@@ -483,7 +483,7 @@ export default function Index() {
 
               <Card>
                 <CardContent className="p-6 text-center">
-                  <Icon name="Award" size={40} className="mx-auto mb-3 text-primary" />
+                  <Icon name="Award" size={40} className="mx-auto mb-3" style={{ color: '#FCC917' }} />
                   <h3 className="font-semibold mb-2">Гарантия качества</h3>
                   <p className="text-sm text-muted-foreground">Сертифицированная продукция</p>
                 </CardContent>
@@ -526,7 +526,7 @@ export default function Index() {
                       </div>
                       <div className="flex gap-4 text-sm">
                         <div className="text-center">
-                          <Icon name="MessageCircle" size={18} className="mx-auto mb-1 text-primary" />
+                          <Icon name="MessageCircle" size={18} className="mx-auto mb-1" style={{ color: '#26255B' }} />
                           <span className="font-semibold">{topic.replies}</span>
                         </div>
                         <div className="text-center">

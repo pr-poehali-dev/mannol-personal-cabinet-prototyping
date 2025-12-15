@@ -171,7 +171,7 @@ export default function Index() {
 
       <main className="container mx-auto px-4 py-8">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4 mb-8">
+          <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-5 mb-8">
             <TabsTrigger value="catalog" className="flex items-center gap-2">
               <Icon name="Package" size={16} />
               <span className="hidden sm:inline">Каталог</span>
@@ -184,6 +184,10 @@ export default function Index() {
                   {cartCount}
                 </Badge>
               )}
+            </TabsTrigger>
+            <TabsTrigger value="analytics" className="flex items-center gap-2">
+              <Icon name="ChartBar" size={16} />
+              <span className="hidden sm:inline">Аналитика</span>
             </TabsTrigger>
             <TabsTrigger value="promo" className="flex items-center gap-2">
               <Icon name="Megaphone" size={16} />
@@ -489,6 +493,271 @@ export default function Index() {
                 </CardContent>
               </Card>
             </div>
+          </TabsContent>
+
+          <TabsContent value="analytics" className="space-y-6">
+            <div className="grid gap-6 md:grid-cols-4">
+              <Card className="md:col-span-1">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3">
+                    <div className="p-3 rounded-lg" style={{ backgroundColor: '#FCC917' }}>
+                      <Icon name="TrendingUp" size={24} style={{ color: '#26255B' }} />
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground">Продажи за месяц</p>
+                      <p className="text-2xl font-bold" style={{ color: '#26255B' }}>₽845,230</p>
+                      <p className="text-xs text-green-600 flex items-center gap-1">
+                        <Icon name="ArrowUp" size={12} />
+                        +12.5%
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="md:col-span-1">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3">
+                    <div className="p-3 rounded-lg" style={{ backgroundColor: '#26255B' }}>
+                      <Icon name="Target" size={24} style={{ color: '#FCC917' }} />
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground">Выполнение плана</p>
+                      <p className="text-2xl font-bold" style={{ color: '#26255B' }}>87%</p>
+                      <p className="text-xs text-muted-foreground">осталось 13%</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="md:col-span-1">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3">
+                    <div className="p-3 rounded-lg bg-green-100">
+                      <Icon name="Gift" size={24} className="text-green-600" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground">Бонусы накоплено</p>
+                      <p className="text-2xl font-bold" style={{ color: '#26255B' }}>12,450</p>
+                      <p className="text-xs text-muted-foreground">баллов</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="md:col-span-1">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3">
+                    <div className="p-3 rounded-lg bg-blue-100">
+                      <Icon name="ShoppingBag" size={24} className="text-blue-600" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground">Заказов за месяц</p>
+                      <p className="text-2xl font-bold" style={{ color: '#26255B' }}>47</p>
+                      <p className="text-xs text-green-600 flex items-center gap-1">
+                        <Icon name="ArrowUp" size={12} />
+                        +8 к пред. месяцу
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <Card>
+              <CardHeader>
+                <h2 className="text-xl font-bold flex items-center gap-2">
+                  <Icon name="BarChart3" size={24} style={{ color: '#26255B' }} />
+                  План продаж по категориям
+                </h2>
+                <p className="text-muted-foreground">Текущий месяц: Декабрь 2024</p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {[
+                  { category: 'Моторные масла', plan: 500000, fact: 452000, percent: 90.4 },
+                  { category: 'Трансмиссионные масла', plan: 200000, fact: 185000, percent: 92.5 },
+                  { category: 'Охлаждающие жидкости', plan: 150000, fact: 138230, percent: 92.2 },
+                  { category: 'Промывочные жидкости', plan: 100000, fact: 70000, percent: 70.0 }
+                ].map((item, index) => (
+                  <div key={index} className="space-y-2">
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <p className="font-semibold">{item.category}</p>
+                        <p className="text-sm text-muted-foreground">
+                          Факт: {item.fact.toLocaleString('ru-RU')} ₽ / План: {item.plan.toLocaleString('ru-RU')} ₽
+                        </p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-lg font-bold" style={{ color: item.percent >= 90 ? '#10b981' : item.percent >= 70 ? '#f59e0b' : '#ef4444' }}>
+                          {item.percent}%
+                        </p>
+                      </div>
+                    </div>
+                    <div className="w-full bg-secondary rounded-full h-2.5">
+                      <div 
+                        className="h-2.5 rounded-full transition-all duration-300"
+                        style={{ 
+                          width: `${item.percent}%`,
+                          backgroundColor: item.percent >= 90 ? '#10b981' : item.percent >= 70 ? '#f59e0b' : '#ef4444'
+                        }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <Card>
+                <CardHeader>
+                  <h2 className="text-lg font-bold flex items-center gap-2">
+                    <Icon name="LineChart" size={20} style={{ color: '#26255B' }} />
+                    Статистика продаж
+                  </h2>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-3">
+                    {[
+                      { month: 'Сентябрь', sales: 720000 },
+                      { month: 'Октябрь', sales: 785000 },
+                      { month: 'Ноябрь', sales: 812000 },
+                      { month: 'Декабрь', sales: 845230 }
+                    ].map((item, index) => (
+                      <div key={index} className="flex justify-between items-center">
+                        <span className="text-sm font-medium">{item.month}</span>
+                        <span className="text-sm font-bold" style={{ color: '#26255B' }}>
+                          {item.sales.toLocaleString('ru-RU')} ₽
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <Separator />
+                  <div className="flex justify-between items-center">
+                    <span className="font-semibold">Средний чек:</span>
+                    <span className="text-xl font-bold" style={{ color: '#26255B' }}>17,985 ₽</span>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <h2 className="text-lg font-bold flex items-center gap-2">
+                    <Icon name="Award" size={20} style={{ color: '#FCC917' }} />
+                    Выполнение плана по бонусам
+                  </h2>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="text-center py-4">
+                    <div className="relative inline-flex items-center justify-center">
+                      <svg className="w-32 h-32">
+                        <circle
+                          className="text-secondary"
+                          strokeWidth="8"
+                          stroke="currentColor"
+                          fill="transparent"
+                          r="56"
+                          cx="64"
+                          cy="64"
+                        />
+                        <circle
+                          style={{ stroke: '#FCC917' }}
+                          strokeWidth="8"
+                          strokeDasharray={351.858}
+                          strokeDashoffset={351.858 * (1 - 0.83)}
+                          strokeLinecap="round"
+                          fill="transparent"
+                          r="56"
+                          cx="64"
+                          cy="64"
+                          transform="rotate(-90 64 64)"
+                        />
+                      </svg>
+                      <span className="absolute text-3xl font-bold" style={{ color: '#26255B' }}>83%</span>
+                    </div>
+                    <p className="mt-4 text-sm text-muted-foreground">До следующего уровня осталось 2,550 баллов</p>
+                  </div>
+                  <Separator />
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">Текущий уровень:</span>
+                      <span className="font-semibold" style={{ color: '#26255B' }}>Золотой партнёр</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">Следующий уровень:</span>
+                      <span className="font-semibold">Платиновый партнёр</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <Card>
+              <CardHeader>
+                <h2 className="text-xl font-bold flex items-center gap-2">
+                  <Icon name="PackageCheck" size={24} style={{ color: '#26255B' }} />
+                  Анализ продукции
+                </h2>
+              </CardHeader>
+              <CardContent>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="font-semibold mb-3 flex items-center gap-2">
+                      <Icon name="TrendingUp" size={18} className="text-green-600" />
+                      Топ-5 покупаемых товаров
+                    </h3>
+                    <div className="space-y-3">
+                      {[
+                        { name: 'MANNOL 5W-40 Синтетика', sales: 145, revenue: 413250 },
+                        { name: 'MANNOL 10W-40 Полусинтетика', sales: 98, revenue: 191100 },
+                        { name: 'MANNOL ATF AG52', sales: 76, revenue: 243200 },
+                        { name: 'MANNOL Антифриз G11', sales: 68, revenue: 57800 },
+                        { name: 'MANNOL 0W-30 Premium', sales: 54, revenue: 207900 }
+                      ].map((product, index) => (
+                        <div key={index} className="flex items-center justify-between p-3 rounded-lg bg-green-50 border border-green-200">
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-white" style={{ backgroundColor: '#10b981' }}>
+                              {index + 1}
+                            </div>
+                            <div>
+                              <p className="text-sm font-semibold">{product.name}</p>
+                              <p className="text-xs text-muted-foreground">{product.sales} шт</p>
+                            </div>
+                          </div>
+                          <p className="text-sm font-bold text-green-700">{product.revenue.toLocaleString('ru-RU')} ₽</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="font-semibold mb-3 flex items-center gap-2">
+                      <Icon name="TrendingDown" size={18} className="text-orange-600" />
+                      Товары с низким спросом
+                    </h3>
+                    <div className="space-y-3">
+                      {[
+                        { name: 'MANNOL Brake Fluid DOT-4', sales: 8, stock: 145 },
+                        { name: 'MANNOL Power Steering Fluid', sales: 12, stock: 98 },
+                        { name: 'MANNOL Diesel Particulate Filter', sales: 5, stock: 67 },
+                        { name: 'MANNOL AdBlue', sales: 15, stock: 120 },
+                        { name: 'MANNOL Engine Flush', sales: 18, stock: 89 }
+                      ].map((product, index) => (
+                        <div key={index} className="flex items-center justify-between p-3 rounded-lg bg-orange-50 border border-orange-200">
+                          <div>
+                            <p className="text-sm font-semibold">{product.name}</p>
+                            <p className="text-xs text-muted-foreground">На складе: {product.stock} шт</p>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-sm font-bold text-orange-700">{product.sales} продаж</p>
+                            <Badge variant="outline" className="text-xs mt-1 border-orange-300 text-orange-700">Низкий спрос</Badge>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </TabsContent>
 
           <TabsContent value="forum" className="space-y-6">
